@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript">
+    var origin_data = [
+      {
+        province_name: '辽宁',
+        province_code: '211',
+        city_name: '沈阳',
+        city_code: '301'
+      },
+      {
+        province_name: '辽宁',
+        province_code: '211',
+        city_name: '大连',
+        city_code: '302'
+      },
+      {
+        province_name: '辽宁',
+        province_code: '211',
+        city_name: '朝阳',
+        city_code: '321'
+      },
+      {
+        province_name: '吉林',
+        province_code: '312',
+        city_name: '长春',
+        city_code: '332'
+      },
+      {
+        province_name: '黑龙江',
+        province_code: '178',
+        city_name: '哈尔滨',
+        city_code: '112'
+      }
+    ];
+    var map = {};
+    var format_array = [];
+    for (var i = 0; i < origin_data.length; i++) {
+      var ai = origin_data[i];
+      if(!map[ai.province_code]){
+        format_array.push({
+          province_name: ai.province_name,
+          province_code: ai.province_code,
+          data: [{city_name:ai.city_name,city_code:ai.city_code}]
+        });
+        map[ai.province_code] = ai;
+      }
+      else{
+        for (var j = 0; j < format_array.length; j++) {
+          var fj = format_array[j];
+          if(fj.id == ai.id){
+            fj.data.push({city_name:ai.city_name,city_code:ai.city_code})
+            break;
+          }
+        }
+      }
+
+
+    }
+
+    console.log(format_array)
+  </script>
+</head>
+<body>
+
+</body>
+</html>
